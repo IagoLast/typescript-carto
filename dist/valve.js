@@ -241,6 +241,9 @@ class CartoLayerGroup {
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = getGroupLayerUrl;
 
+/**
+ * @private
+ */
 function getGroupLayerUrl(layers, apiUrl) {
     return fetch(apiUrl, {
         method: 'POST',
@@ -250,9 +253,15 @@ function getGroupLayerUrl(layers, apiUrl) {
         .then(data => data.json())
         .then(data => `https://ashbu.cartocdn.com/documentation/api/v1/map/${data.layergroupid}/0/{z}/{x}/{y}.png`);
 }
+/**
+ * @private
+ */
 const HEADERS = new Headers({
     'Content-Type': 'application/json'
 });
+/**
+ * @private
+ */
 function _buildBody(layers) {
     return JSON.stringify({ layers });
 }

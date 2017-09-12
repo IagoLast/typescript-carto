@@ -14,8 +14,6 @@
     "ts-loader": "^2.3.7",
     "ts-node": "^3.3.0",
     "typedoc": "^0.8.0",
-    "typedoc-markdown-theme": "^0.0.4",
-    "typedoc-plugin-markdown": "^1.0.8",
     "typescript": "^2.5.2",
     "webpack": "^3.5.6"
   },
@@ -23,7 +21,7 @@
     "test": "mocha --compilers ts:ts-node/register",
     "build": "webpack",
     "build:watch": "webpack --watch",
-    "doc": "typedoc --out doc src --excludePrivate --theme markdown"
+    "doc": "typedoc --out doc src --excludePrivate --mode file --name carto.Valve"
   },
   "main": "dist/valve.js",
   "jsnext": "es6/index.js"

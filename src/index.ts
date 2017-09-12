@@ -3,7 +3,6 @@ import Layer from '../src/layer';
 import CartoLayerGroup from '../src/cartoLayerGroup';
 import LeafletAdapter from '../src/views/leaflet.adapter';
 
-
 export {
     Valve,
     Layer,
