@@ -1,14 +1,5 @@
-/**
- * @private
- */
-declare global {
-    interface Window { L: any }
-}
+import { TileLayer } from 'leaflet';
 
 
-export default window.L.TileLayer.extend({
-
-
-});
-
+export default TileLayer.extend({});
 

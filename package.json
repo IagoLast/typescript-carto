@@ -24,5 +24,8 @@
     "doc": "typedoc --out doc src --excludePrivate --mode file --name carto.Valve"
   },
   "main": "dist/valve.js",
-  "jsnext": "es6/index.js"
+  "jsnext": "es6/index.js",
+  "dependencies": {
+    "leaflet": "^1.2.0"
+  }
 }

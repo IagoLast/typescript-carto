@@ -48,6 +48,9 @@ export default class CartoLayerGroup {
     }
 
     getView(type: 'leaflet' | 'google') {
+        if (this._view) {
+            return this._view;
+        }
         this._view = new LeafletAdapter(this._url);
         return this._view;
     }
