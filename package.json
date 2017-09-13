@@ -9,6 +9,7 @@
     "@types/jest": "^20.0.8",
     "@types/leaflet": "^1.2.0",
     "@types/mocha": "^2.2.43",
+    "@types/whatwg-fetch": "^0.0.33",
     "chai": "^4.1.2",
     "eslint": "^4.6.1",
     "jest": "^21.0.2",
@@ -33,10 +34,14 @@
   "main": "dist/valve.js",
   "jsnext": "es6/index.js",
   "dependencies": {
-    "leaflet": "^1.2.0"
+    "leaflet": "^1.2.0",
+    "whatwg-fetch": "^2.0.3"
   },
   "jest": {
-    "moduleFileExtensions": ["ts","js"],
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
     "transform": {
       "\\.ts$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
