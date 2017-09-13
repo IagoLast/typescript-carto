@@ -92,8 +92,8 @@ return /******/ (function(modules) { // webpackBootstrap
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_valve__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_layer__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_cartoLayerGroup__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_layer__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_cartoLayerGroup__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_views_leaflet_adapter__ = __webpack_require__(0);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Valve", function() { return __WEBPACK_IMPORTED_MODULE_0__src_valve__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Layer", function() { return __WEBPACK_IMPORTED_MODULE_1__src_layer__["a"]; });
@@ -118,6 +118,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__client__ = __webpack_require__(3);
+
 
 /**
  *
@@ -127,9 +129,25 @@ class Valve {
         this._username = username;
         this._apiKey = apiKey;
         this._serverUrl = serverUrl;
+        addEventListener('map:load', this.load.bind(this));
     }
     get url() {
         return this._serverUrl.replace('{user}', this._username) + '/api/v1/map';
+    }
+    async load() {
+        // Currently response is only a url.
+        const response = await Object(__WEBPACK_IMPORTED_MODULE_0__client__["a" /* getGroupLayerUrl */])(this._cartoLayerGroup.layers, this.url);
+        this._update(response);
+        return Promise.resolve();
+    }
+    setLayerGroup(cartoLayerGroup) {
+        this._cartoLayerGroup = cartoLayerGroup;
+    }
+    /**
+    * @private
+    */
+    _update(response) {
+        this._cartoLayerGroup.update(response);
     }
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = Valve;
@@ -138,6 +156,39 @@ class Valve {
 
 /***/ }),
 /* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = getGroupLayerUrl;
+
+/**
+ * @private
+ */
+function getGroupLayerUrl(layers, apiUrl) {
+    return fetch(apiUrl, {
+        method: 'POST',
+        headers: HEADERS,
+        body: _buildBody(layers),
+    })
+        .then(data => data.json())
+        .then(data => `https://ashbu.cartocdn.com/documentation/api/v1/map/${data.layergroupid}/0,1/{z}/{x}/{y}.png`);
+}
+/**
+ * @private
+ */
+const HEADERS = new Headers({
+    'Content-Type': 'application/json'
+});
+/**
+ * @private
+ */
+function _buildBody(layers) {
+    return JSON.stringify({ layers });
+}
+
+
+/***/ }),
+/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -171,13 +222,11 @@ class Layer {
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__client__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_leaflet_adapter__ = __webpack_require__(0);
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__views_leaflet_adapter__ = __webpack_require__(0);
 
 
 /**
@@ -200,77 +249,28 @@ class CartoLayerGroup {
     constructor(valve, layers) {
         this._valve = valve;
         this._layers = layers;
-        addEventListener('map:load', this.onMapReloaded.bind(this));
+        this._valve.setLayerGroup(this);
     }
-    get url() {
-        return this._url;
+    get layers() {
+        return this._layers;
     }
-    setUrl(url) {
+    update(url) {
         this._url = url;
+        if (this._view) {
+            this._view.setUrl(this._url);
+        }
         return this;
-    }
-    async load() {
-        // Currently response is only a url.
-        let response = await Object(__WEBPACK_IMPORTED_MODULE_0__client__["a" /* getGroupLayerUrl */])(this._layers, this._valve.url);
-        return this._update(response);
     }
     getView(type) {
         if (this._view) {
             return this._view;
         }
-        this._view = new __WEBPACK_IMPORTED_MODULE_1__views_leaflet_adapter__["a" /* default */](this._url);
+        this._view = new __WEBPACK_IMPORTED_MODULE_0__views_leaflet_adapter__["a" /* default */](this._url);
         return this._view;
-    }
-    async onMapReloaded() {
-        await this.load();
-        if (this._view) {
-            this._view.setUrl(this._url);
-        }
-    }
-    /**
-     * @private
-     * @param response
-     */
-    _update(response) {
-        this.setUrl(response);
-        return this;
     }
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = CartoLayerGroup;
 
-
-
-/***/ }),
-/* 5 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = getGroupLayerUrl;
-
-/**
- * @private
- */
-function getGroupLayerUrl(layers, apiUrl) {
-    return fetch(apiUrl, {
-        method: 'POST',
-        headers: HEADERS,
-        body: _buildBody(layers),
-    })
-        .then(data => data.json())
-        .then(data => `https://ashbu.cartocdn.com/documentation/api/v1/map/${data.layergroupid}/0/{z}/{x}/{y}.png`);
-}
-/**
- * @private
- */
-const HEADERS = new Headers({
-    'Content-Type': 'application/json'
-});
-/**
- * @private
- */
-function _buildBody(layers) {
-    return JSON.stringify({ layers });
-}
 
 
 /***/ }),

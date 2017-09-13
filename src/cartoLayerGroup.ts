@@ -29,22 +29,19 @@ export default class CartoLayerGroup {
     constructor(valve: Valve, layers: Layer[]) {
         this._valve = valve;
         this._layers = layers;
-        addEventListener('map:load', this.onMapReloaded.bind(this));
+        this._valve.setLayerGroup(this);
     }
 
-    public get url(): string {
-        return this._url;
+    public get layers(): Layer[] {
+        return this._layers;
     }
 
-    setUrl(url: string): CartoLayerGroup {
+    update(url: string): CartoLayerGroup {
         this._url = url;
+        if (this._view) {
+            this._view.setUrl(this._url);
+        }
         return this;
-    }
-
-    async load(): Promise<CartoLayerGroup> {
-        // Currently response is only a url.
-        let response = await getGroupLayerUrl(this._layers, this._valve.url);
-        return this._update(response);
     }
 
     getView(type: 'leaflet' | 'google') {
@@ -55,18 +52,4 @@ export default class CartoLayerGroup {
         return this._view;
     }
 
-    async onMapReloaded(): Promise<void> {
-        await this.load();
-        if (this._view) {
-            this._view.setUrl(this._url);
-        }
-    }
-    /**
-     * @private
-     * @param response 
-     */
-    _update(response: string): CartoLayerGroup {
-        this.setUrl(response);
-        return this;
-    }
 }

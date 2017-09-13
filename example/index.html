@@ -26,16 +26,19 @@
             let valve = new carto.Valve('documentation', '552dc6b016acb007acf0b9091719be8d0a37847b', 'https://{user}.cartodb.com:443');
             // Create a layer
             let layer = new carto.Layer('select * from european_countries_e', "#layer{ polygon-fill: #FFFFB2;}");
+            // Create a second layer
+            let layer1 = new carto.Layer('select * from european_countries_e limit 3', "#layer{ polygon-fill: #FF0000;}");
             // Create a layerGroup
-            let cartoLayerGroup = new carto.CartoLayerGroup(valve, [layer]);
-            // Load the cartoLayergroup
-            await cartoLayerGroup.load();
+            let cartoLayerGroup = new carto.CartoLayerGroup(valve, [layer, layer1]);
+            // Load the valve
+            await valve.load();
             // Once loaded get the leaflet view and add it to the map
             cartoLayerGroup.getView('leaflet').addTo(mymap);
+            // Wait for half second
             setTimeout(() => {
                 // Wait a timeout to update the style
                 layer.setStyle('#layer { polygon-fill: #00FFB2;}');
-            }, 200);
+            }, 500);
         })();
     </script>
 </body>

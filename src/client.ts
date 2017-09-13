@@ -10,7 +10,7 @@ export function getGroupLayerUrl(layers: Layer[], apiUrl: string): Promise<strin
         body: _buildBody(layers),
     })
         .then(data => data.json())
-        .then(data => `https://ashbu.cartocdn.com/documentation/api/v1/map/${data.layergroupid}/0/{z}/{x}/{y}.png`);
+        .then(data => `https://ashbu.cartocdn.com/documentation/api/v1/map/${data.layergroupid}/0,1/{z}/{x}/{y}.png`);
 }
 
 /**
