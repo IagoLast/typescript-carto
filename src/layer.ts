@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 export default class Layer {
     private _source: string;
@@ -10,20 +10,20 @@ export default class Layer {
         this._style = style;
     }
 
-    setStyle(style: string): void {
+    public setStyle(style: string): void {
         this._style = style;
-        var event = new CustomEvent('map:load');
+        const event = new CustomEvent('map:load');
         dispatchEvent(event);
     }
 
-    toJSON() {
+    public toJSON() {
         return {
-            type: "cartodb",
             options: {
-                sql: this._source,
                 cartocss: this._style,
-                cartocss_version: "2.1.1"
-            }
-        }
+                cartocss_version: '2.1.1',
+                sql: this._source,
+            },
+            type: 'cartodb',
+        };
     }
 }

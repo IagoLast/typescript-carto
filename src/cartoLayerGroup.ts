@@ -1,8 +1,7 @@
-import Valve from './valve';
-import Layer from './layer';
 import { getGroupLayerUrl } from './client';
+import Layer from './layer';
+import Valve from './valve';
 import LeafletAdapter from './views/leaflet.adapter';
-
 
 /**
  * Main Class for doing foo.
@@ -17,11 +16,11 @@ export default class CartoLayerGroup {
      * Class constructor
      * @param valve The valve to do something
      * @param layers The list with the Layers grouped in the layerGroup
-     * 
-     * @example 
-     * 
+     *
+     * @example
+     *
      * ```javascript
-     * 
+     *
      *  let cartoLayerGroup = new CartoLayerGroup(valve, layers);
      *  foo = var;
      * ```
@@ -36,7 +35,7 @@ export default class CartoLayerGroup {
         return this._layers;
     }
 
-    update(url: string): CartoLayerGroup {
+    public update(url: string): CartoLayerGroup {
         this._url = url;
         if (this._view) {
             this._view.setUrl(this._url);
@@ -44,7 +43,7 @@ export default class CartoLayerGroup {
         return this;
     }
 
-    getView(type: 'leaflet' | 'google') {
+    public getView(type: 'leaflet' | 'google') {
         if (this._view) {
             return this._view;
         }

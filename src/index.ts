@@ -1,18 +1,18 @@
-import Valve from '../src/valve';
-import Layer from '../src/layer';
 import CartoLayerGroup from '../src/cartoLayerGroup';
+import Layer from '../src/layer';
+import Valve from '../src/valve';
 import LeafletAdapter from '../src/views/leaflet.adapter';
 
 export {
-    Valve,
-    Layer,
     CartoLayerGroup,
-    LeafletAdapter
-}
+    Layer,
+    LeafletAdapter,
+    Valve,
+};
 
 export default {
-    Valve,
-    Layer,
     CartoLayerGroup,
-    LeafletAdapter
-}
+    Layer,
+    LeafletAdapter,
+    Valve,
+};

@@ -5,19 +5,19 @@ import Layer from './layer';
  */
 export function getGroupLayerUrl(layers: Layer[], apiUrl: string): Promise<string> {
     return fetch(apiUrl, {
-        method: 'POST',
-        headers: HEADERS,
         body: _buildBody(layers),
+        headers: HEADERS,
+        method: 'POST',
     })
-        .then(data => data.json())
-        .then(data => `https://ashbu.cartocdn.com/documentation/api/v1/map/${data.layergroupid}/0,1/{z}/{x}/{y}.png`);
+        .then((data) => data.json())
+        .then((data) => `https://ashbu.cartocdn.com/documentation/api/v1/map/${data.layergroupid}/0,1/{z}/{x}/{y}.png`);
 }
 
 /**
  * @private
  */
 const HEADERS = new Headers({
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
 });
 
 /**
