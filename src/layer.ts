@@ -1,13 +1,19 @@
+import Source from './analyses/source';
+
 /**
  *
  */
 export default class Layer {
-    private _source: string;
+    private _source: Source;
     private _style: string;
 
-    constructor(source: string, style: string) {
+    constructor(source: Source, style: string) {
         this._source = source;
         this._style = style;
+    }
+
+    public get source(): any {
+        return this._source;
     }
 
     public setStyle(style: string): void {
@@ -18,12 +24,15 @@ export default class Layer {
 
     public toJSON() {
         return {
+            id: '636838fb-db9a-46b6-91d5-74ab9884111d',
             options: {
                 cartocss: this._style,
                 cartocss_version: '2.1.1',
-                sql: this._source,
+                source: {
+                    id: this._source.id,
+                },
             },
-            type: 'cartodb',
+            type: 'mapnik',
         };
     }
 }

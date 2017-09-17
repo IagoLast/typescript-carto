@@ -1,4 +1,3 @@
-import { getGroupLayerUrl } from './client';
 import Layer from './layer';
 import Valve from './valve';
 import LeafletAdapter from './views/leaflet.adapter';
@@ -35,8 +34,10 @@ export default class CartoLayerGroup {
         return this._layers;
     }
 
-    public update(url: string): CartoLayerGroup {
-        this._url = url;
+    public update(response: any): CartoLayerGroup {
+        const visibleLayerIndexes = '0';
+        this._url = `https://ashbu.cartocdn.com/${this._valve.username}/api/v1/map/`;
+        this._url += `${response.layergroupid} /${visibleLayerIndexes}/{z}/{x}/{y}.png`;
         if (this._view) {
             this._view.setUrl(this._url);
         }
@@ -49,6 +50,14 @@ export default class CartoLayerGroup {
         }
         this._view = new LeafletAdapter(this._url);
         return this._view;
+    }
+
+    public getAnalyses(): any[] {
+        const analyses: any[] = [];
+        for (const layer of this._layers) {
+            analyses.push(layer.source);
+        }
+        return analyses;
     }
 
 }
