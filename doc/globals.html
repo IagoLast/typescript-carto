@@ -67,17 +67,13 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section tsd-is-private tsd-is-private-protected tsd-is-not-exported">
-							<h3>Modules</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-module tsd-is-private tsd-is-not-exported"><a href="modules/__global.html" class="tsd-kind-icon">__global</a></li>
-							</ul>
-						</section>
 						<section class="tsd-index-section ">
 							<h3>Classes</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-class"><a href="classes/cartolayergroup.html" class="tsd-kind-icon">Carto<wbr>Layer<wbr>Group</a></li>
+								<li class="tsd-kind-class"><a href="classes/client.html" class="tsd-kind-icon">Client</a></li>
 								<li class="tsd-kind-class"><a href="classes/layer.html" class="tsd-kind-icon">Layer</a></li>
+								<li class="tsd-kind-class"><a href="classes/source.html" class="tsd-kind-icon">Source</a></li>
 								<li class="tsd-kind-class"><a href="classes/valve.html" class="tsd-kind-icon">Valve</a></li>
 							</ul>
 						</section>
@@ -85,13 +81,6 @@
 							<h3>Variables</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-variable tsd-is-private tsd-is-not-exported"><a href="globals.html#headers" class="tsd-kind-icon">HEADERS</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
-							<h3>Functions</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-is-private tsd-is-not-exported"><a href="globals.html#_buildbody" class="tsd-kind-icon">_build<wbr>Body</a></li>
-								<li class="tsd-kind-function tsd-is-private"><a href="globals.html#getgrouplayerurl" class="tsd-kind-icon">get<wbr>Group<wbr>Layer<wbr>Url</a></li>
 							</ul>
 						</section>
 					</div>
@@ -102,70 +91,14 @@
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-is-private tsd-is-not-exported">
 					<a name="headers" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> HEADERS</h3>
-					<div class="tsd-signature tsd-kind-icon">HEADERS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Headers</span><span class="tsd-signature-symbol"> =&nbsp;new Headers({&#x27;Content-Type&#x27;: &#x27;application/json&#x27;})</span></div>
+					<div class="tsd-signature tsd-kind-icon">HEADERS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Headers</span><span class="tsd-signature-symbol"> =&nbsp;new Headers({&#x27;Content-Type&#x27;: &#x27;application/json&#x27;,})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/IagoLast/typescript-carto/blob/bf1c4ec/src/client.ts#L19">client.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/IagoLast/typescript-carto/blob/905bd22/src/client.ts#L50">client.ts:50</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 					</div>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
-				<h2>Functions</h2>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-is-private tsd-is-not-exported">
-					<a name="_buildbody" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _build<wbr>Body</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-is-private tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">_build<wbr>Body<span class="tsd-signature-symbol">(</span>layers<span class="tsd-signature-symbol">: </span><a href="classes/layer.html" class="tsd-signature-type">Layer</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/IagoLast/typescript-carto/blob/bf1c4ec/src/client.ts#L26">client.ts:26</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>layers: <a href="classes/layer.html" class="tsd-signature-type">Layer</a><span class="tsd-signature-symbol">[]</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-is-private">
-					<a name="getgrouplayerurl" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> get<wbr>Group<wbr>Layer<wbr>Url</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Group<wbr>Layer<wbr>Url<span class="tsd-signature-symbol">(</span>layers<span class="tsd-signature-symbol">: </span><a href="classes/layer.html" class="tsd-signature-type">Layer</a><span class="tsd-signature-symbol">[]</span>, apiUrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/IagoLast/typescript-carto/blob/bf1c4ec/src/client.ts#L6">client.ts:6</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>layers: <a href="classes/layer.html" class="tsd-signature-type">Layer</a><span class="tsd-signature-symbol">[]</span></h5>
-								</li>
-								<li>
-									<h5>apiUrl: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
 				</section>
 			</section>
 		</div>
@@ -175,9 +108,6 @@
 					<li class="globals current ">
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
-					<li class=" tsd-kind-module tsd-is-private tsd-is-not-exported">
-						<a href="modules/__global.html">__global</a>
-					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
@@ -186,19 +116,19 @@
 						<a href="classes/cartolayergroup.html" class="tsd-kind-icon">Carto<wbr>Layer<wbr>Group</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="classes/client.html" class="tsd-kind-icon">Client</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="classes/layer.html" class="tsd-kind-icon">Layer</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/source.html" class="tsd-kind-icon">Source</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/valve.html" class="tsd-kind-icon">Valve</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-private tsd-is-not-exported">
 						<a href="globals.html#headers" class="tsd-kind-icon">HEADERS</a>
-					</li>
-					<li class=" tsd-kind-function tsd-is-private tsd-is-not-exported">
-						<a href="globals.html#_buildbody" class="tsd-kind-icon">_build<wbr>Body</a>
-					</li>
-					<li class=" tsd-kind-function tsd-is-private">
-						<a href="globals.html#getgrouplayerurl" class="tsd-kind-icon">get<wbr>Group<wbr>Layer<wbr>Url</a>
 					</li>
 				</ul>
 			</nav>

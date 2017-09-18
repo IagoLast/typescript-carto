@@ -29,7 +29,7 @@
   "scripts": {
     "build:watch": "webpack --watch",
     "build": "webpack",
-    "doc": "typedoc --out doc src --excludePrivate --mode file --name carto.Valve",
+    "doc": "typedoc --out doc src --excludePrivate --ignoreCompilerErrors --mode file --name carto.Valve",
     "lint:fix": "tslint --project . --fix",
     "lint": "tslint --project .",
     "test:mocha": "mocha --compilers ts:ts-node/register",

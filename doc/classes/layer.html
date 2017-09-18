@@ -85,6 +85,12 @@
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
+							<h3>Accessors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="layer.html#source" class="tsd-kind-icon">source</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="layer.html#setstyle" class="tsd-kind-icon">set<wbr>Style</a></li>
@@ -100,25 +106,45 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Layer<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, style<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="layer.html" class="tsd-signature-type">Layer</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Layer<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><a href="source.html" class="tsd-signature-type">Source</a>, style<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="layer.html" class="tsd-signature-type">Layer</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/IagoLast/typescript-carto/blob/bf1c4ec/src/layer.ts#L6">layer.ts:6</a></li>
+									<li>Defined in <a href="https://github.com/IagoLast/typescript-carto/blob/905bd22/src/layer.ts#L8">layer.ts:8</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>source: <span class="tsd-signature-type">string</span></h5>
+									<h5>source: <a href="source.html" class="tsd-signature-type">Source</a></h5>
 								</li>
 								<li>
 									<h5>style: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="layer.html" class="tsd-signature-type">Layer</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Accessors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="source" class="tsd-anchor"></a>
+					<h3>source</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> source<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/IagoLast/typescript-carto/blob/905bd22/src/layer.ts#L15">layer.ts:15</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -135,7 +161,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/IagoLast/typescript-carto/blob/bf1c4ec/src/layer.ts#L13">layer.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/IagoLast/typescript-carto/blob/905bd22/src/layer.ts#L19">layer.ts:19</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -158,11 +184,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/IagoLast/typescript-carto/blob/bf1c4ec/src/layer.ts#L19">layer.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/IagoLast/typescript-carto/blob/905bd22/src/layer.ts#L25">layer.ts:25</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">object</span></h4>
 							<ul class="tsd-parameters">
+								<li class="tsd-parameter">
+									<h5>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+								</li>
 								<li class="tsd-parameter">
 									<h5>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
 								</li>
@@ -176,7 +205,12 @@
 											<h5>cartocss_<wbr>version<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
 										</li>
 										<li class="tsd-parameter">
-											<h5>sql<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+											<h5>source<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></h5>
+											<ul class="tsd-parameters">
+												<li class="tsd-parameter">
+													<h5>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+												</li>
+											</ul>
 										</li>
 									</ul>
 								</li>
@@ -199,6 +233,9 @@
 					<li class=" tsd-kind-class">
 						<a href="cartolayergroup.html" class="tsd-kind-icon">Carto<wbr>Layer<wbr>Group</a>
 					</li>
+					<li class=" tsd-kind-class">
+						<a href="client.html" class="tsd-kind-icon">Client</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class">
@@ -206,6 +243,9 @@
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
 								<a href="layer.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="layer.html#source" class="tsd-kind-icon">source</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="layer.html#setstyle" class="tsd-kind-icon">set<wbr>Style</a>
@@ -218,16 +258,13 @@
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-class">
+						<a href="source.html" class="tsd-kind-icon">Source</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="valve.html" class="tsd-kind-icon">Valve</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-private tsd-is-not-exported">
 						<a href="../globals.html#headers" class="tsd-kind-icon">HEADERS</a>
-					</li>
-					<li class=" tsd-kind-function tsd-is-private tsd-is-not-exported">
-						<a href="../globals.html#_buildbody" class="tsd-kind-icon">_build<wbr>Body</a>
-					</li>
-					<li class=" tsd-kind-function tsd-is-private">
-						<a href="../globals.html#getgrouplayerurl" class="tsd-kind-icon">get<wbr>Group<wbr>Layer<wbr>Url</a>
 					</li>
 				</ul>
 			</nav>

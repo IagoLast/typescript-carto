@@ -94,17 +94,15 @@
 						<section class="tsd-index-section ">
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="cartolayergroup.html#url" class="tsd-kind-icon">url</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="cartolayergroup.html#layers" class="tsd-kind-icon">layers</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="cartolayergroup.html#_update" class="tsd-kind-icon">_update</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="cartolayergroup.html#getanalyses" class="tsd-kind-icon">get<wbr>Analyses</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="cartolayergroup.html#getview" class="tsd-kind-icon">get<wbr>View</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="cartolayergroup.html#load" class="tsd-kind-icon">load</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="cartolayergroup.html#onmapreloaded" class="tsd-kind-icon">on<wbr>Map<wbr>Reloaded</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="cartolayergroup.html#seturl" class="tsd-kind-icon">set<wbr>Url</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="cartolayergroup.html#update" class="tsd-kind-icon">update</a></li>
 							</ul>
 						</section>
 					</div>
@@ -122,7 +120,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/IagoLast/typescript-carto/blob/bf1c4ec/src/cartoLayerGroup.ts#L14">cartoLayerGroup.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/IagoLast/typescript-carto/blob/905bd22/src/cartoLayerGroup.ts#L12">cartoLayerGroup.ts:12</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -165,49 +163,39 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Accessors</h2>
 				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
-					<a name="url" class="tsd-anchor"></a>
-					<h3>url</h3>
+					<a name="layers" class="tsd-anchor"></a>
+					<h3>layers</h3>
 					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> url<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> layers<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="layer.html" class="tsd-signature-type">Layer</a><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/IagoLast/typescript-carto/blob/bf1c4ec/src/cartoLayerGroup.ts#L35">cartoLayerGroup.ts:35</a></li>
+									<li>Defined in <a href="https://github.com/IagoLast/typescript-carto/blob/905bd22/src/cartoLayerGroup.ts#L33">cartoLayerGroup.ts:33</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="layer.html" class="tsd-signature-type">Layer</a><span class="tsd-signature-symbol">[]</span></h4>
 						</li>
 					</ul>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="_update" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _update</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">_update<span class="tsd-signature-symbol">(</span>response<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="cartolayergroup.html" class="tsd-signature-type">CartoLayerGroup</a></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getanalyses" class="tsd-anchor"></a>
+					<h3>get<wbr>Analyses</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Analyses<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/IagoLast/typescript-carto/blob/bf1c4ec/src/cartoLayerGroup.ts#L65">cartoLayerGroup.ts:65</a></li>
+									<li>Defined in <a href="https://github.com/IagoLast/typescript-carto/blob/905bd22/src/cartoLayerGroup.ts#L55">cartoLayerGroup.ts:55</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>response: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="cartolayergroup.html" class="tsd-signature-type">CartoLayerGroup</a></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -221,7 +209,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/IagoLast/typescript-carto/blob/bf1c4ec/src/cartoLayerGroup.ts#L50">cartoLayerGroup.ts:50</a></li>
+									<li>Defined in <a href="https://github.com/IagoLast/typescript-carto/blob/905bd22/src/cartoLayerGroup.ts#L47">cartoLayerGroup.ts:47</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -235,56 +223,22 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="load" class="tsd-anchor"></a>
-					<h3>load</h3>
+					<a name="update" class="tsd-anchor"></a>
+					<h3>update</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">load<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="cartolayergroup.html" class="tsd-signature-type">CartoLayerGroup</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">update<span class="tsd-signature-symbol">(</span>response<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="cartolayergroup.html" class="tsd-signature-type">CartoLayerGroup</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/IagoLast/typescript-carto/blob/bf1c4ec/src/cartoLayerGroup.ts#L44">cartoLayerGroup.ts:44</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="cartolayergroup.html" class="tsd-signature-type">CartoLayerGroup</a><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="onmapreloaded" class="tsd-anchor"></a>
-					<h3>on<wbr>Map<wbr>Reloaded</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">on<wbr>Map<wbr>Reloaded<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/IagoLast/typescript-carto/blob/bf1c4ec/src/cartoLayerGroup.ts#L55">cartoLayerGroup.ts:55</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="seturl" class="tsd-anchor"></a>
-					<h3>set<wbr>Url</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">set<wbr>Url<span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="cartolayergroup.html" class="tsd-signature-type">CartoLayerGroup</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/IagoLast/typescript-carto/blob/bf1c4ec/src/cartoLayerGroup.ts#L39">cartoLayerGroup.ts:39</a></li>
+									<li>Defined in <a href="https://github.com/IagoLast/typescript-carto/blob/905bd22/src/cartoLayerGroup.ts#L37">cartoLayerGroup.ts:37</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>url: <span class="tsd-signature-type">string</span></h5>
+									<h5>response: <span class="tsd-signature-type">any</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="cartolayergroup.html" class="tsd-signature-type">CartoLayerGroup</a></h4>
@@ -312,41 +266,35 @@
 								<a href="cartolayergroup.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
-								<a href="cartolayergroup.html#url" class="tsd-kind-icon">url</a>
+								<a href="cartolayergroup.html#layers" class="tsd-kind-icon">layers</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="cartolayergroup.html#_update" class="tsd-kind-icon">_update</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="cartolayergroup.html#getanalyses" class="tsd-kind-icon">get<wbr>Analyses</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="cartolayergroup.html#getview" class="tsd-kind-icon">get<wbr>View</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="cartolayergroup.html#load" class="tsd-kind-icon">load</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="cartolayergroup.html#onmapreloaded" class="tsd-kind-icon">on<wbr>Map<wbr>Reloaded</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="cartolayergroup.html#seturl" class="tsd-kind-icon">set<wbr>Url</a>
+								<a href="cartolayergroup.html#update" class="tsd-kind-icon">update</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-class">
+						<a href="client.html" class="tsd-kind-icon">Client</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="layer.html" class="tsd-kind-icon">Layer</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="source.html" class="tsd-kind-icon">Source</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="valve.html" class="tsd-kind-icon">Valve</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-private tsd-is-not-exported">
 						<a href="../globals.html#headers" class="tsd-kind-icon">HEADERS</a>
-					</li>
-					<li class=" tsd-kind-function tsd-is-private tsd-is-not-exported">
-						<a href="../globals.html#_buildbody" class="tsd-kind-icon">_build<wbr>Body</a>
-					</li>
-					<li class=" tsd-kind-function tsd-is-private">
-						<a href="../globals.html#getgrouplayerurl" class="tsd-kind-icon">get<wbr>Group<wbr>Layer<wbr>Url</a>
 					</li>
 				</ul>
 			</nav>
