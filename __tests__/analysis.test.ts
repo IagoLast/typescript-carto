@@ -35,5 +35,36 @@ describe('Analysis', () => {
             };
             expect(actual).toEqual(expected);
         });
+        it('Should serialize a analysis with 3 levels of depth', () => {
+            const analysis0 = new Analysis('a0', 'source', undefined, { query: 'SELECT * FROM cities' });
+            const analysis1 = new Analysis('a1', 'filter-category', analysis0, { column: 'name', reject: 'Madrid' });
+            // tslint:disable-next-line:max-line-length
+            const analysis2 = new Analysis('a2', 'line-to-single-point', analysis1, { destination_longitude: 0, destination_latitude: 0 });
+            const actual = analysis2.toJSON();
+            const expected = {
+                id: 'a2',
+                params: {
+                    destination_latitude: 0,
+                    destination_longitude: 0,
+                    source: {
+                        id: 'a1',
+                        params: {
+                            column: 'name',
+                            reject: 'Madrid',
+                            source: {
+                                id: 'a0',
+                                params: {
+                                    query: 'SELECT * FROM cities',
+                                },
+                                type: 'source',
+                            },
+                        },
+                        type: 'filter-category',
+                    },
+                },
+                type: 'line-to-single-point',
+            };
+            expect(actual).toEqual(expected);
+        });
     });
 });
