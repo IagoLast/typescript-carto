@@ -27,8 +27,9 @@
             // Create the Engine
             let engine = new carto.Engine('iago-carto', '552dc6b016acb007acf0b9091719be8d0a37847b', 'https://{user}.carto.com:443');
             // Create a source node
-            const source = new carto.Analyses.Source('a0', 'SELECT * FROM \"iago-carto\".lugares');
-            const source1 = new carto.Analyses.Source('a1', 'SELECT * FROM \"iago-carto\".lugares LIMIT 2');
+            const source = carto.Analysis.Source('a0', 'SELECT * FROM \"iago-carto\".lugares');
+            // const source = new carto.Analysis('a0', 'source', undefined, { query: 'SELECT * FROM \"iago-carto\".lugares' });
+            const source1 = new carto.Analysis('a1', 'source', undefined, { query: 'SELECT * FROM \"iago-carto\".lugares LIMIT 2' });
             // Create a layer
             let layer = new carto.Layer(source, style);
             // Create a layerGroup

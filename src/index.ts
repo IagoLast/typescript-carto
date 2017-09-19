@@ -1,11 +1,11 @@
-import Analyses from '../src/analyses/index';
+import Analysis from '../src/analysis';
 import CartoLayerGroup from '../src/cartoLayerGroup';
 import Engine from '../src/engine';
 import Layer from '../src/layer';
 import LeafletAdapter from '../src/views/leaflet.adapter';
 
 export {
-    Analyses,
+    Analysis,
     CartoLayerGroup,
     Engine,
     Layer,
@@ -13,7 +13,7 @@ export {
 };
 
 export default {
-    Analyses,
+    Analysis,
     CartoLayerGroup,
     Engine,
     Layer,

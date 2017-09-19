@@ -1,4 +1,4 @@
-import Source from './analyses/source';
+import Analysis from './analysis';
 
 const EVENT_LOAD = new CustomEvent('map:load');
 
@@ -6,10 +6,10 @@ const EVENT_LOAD = new CustomEvent('map:load');
  *
  */
 export default class Layer {
-    private _source: Source;
+    private _source: Analysis;
     private _style: string;
 
-    constructor(source: Source, style: string) {
+    constructor(source: Analysis, style: string) {
         this._source = source;
         this._style = style;
     }
@@ -23,7 +23,7 @@ export default class Layer {
         dispatchEvent(EVENT_LOAD);
     }
 
-    public setSource(source: Source): void {
+    public setSource(source: Analysis): void {
         this._source = source;
         dispatchEvent(EVENT_LOAD);
     }

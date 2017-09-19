@@ -1,10 +1,10 @@
-import { Analyses, CartoLayerGroup, Layer, Valve } from '../src/index';
+import { Analysis, CartoLayerGroup, Engine, Layer } from '../src/index';
 
 describe('CartoLayerGroup', () => {
-    const source = new Analyses.Source('a0', 'select * from cities');
-    const valve = new Valve('iago-carto', 'api-key', 'http://{user}.carto.com');
+    const source = new Analysis('a0', 'source', undefined, 'select * from cities');
+    const engine = new Engine('iago-carto', 'api-key', 'http://{user}.carto.com');
     const layer = new Layer(source, 'style');
-    const cartoLayerGroup = new CartoLayerGroup(valve, [layer]);
+    const cartoLayerGroup = new CartoLayerGroup(engine, [layer]);
     describe('.getAnalyses', () => {
         it('should return the analysis in the layers', () => {
             const actual = cartoLayerGroup.getAnalyses();
