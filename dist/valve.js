@@ -95,18 +95,18 @@ const index_1 = __webpack_require__(2);
 exports.Analyses = index_1.default;
 const cartoLayerGroup_1 = __webpack_require__(4);
 exports.CartoLayerGroup = cartoLayerGroup_1.default;
-const layer_1 = __webpack_require__(6);
+const engine_1 = __webpack_require__(6);
+exports.Engine = engine_1.default;
+const layer_1 = __webpack_require__(9);
 exports.Layer = layer_1.default;
-const valve_1 = __webpack_require__(7);
-exports.Valve = valve_1.default;
 const leaflet_adapter_1 = __webpack_require__(0);
 exports.LeafletAdapter = leaflet_adapter_1.default;
 exports.default = {
     Analyses: index_1.default,
     CartoLayerGroup: cartoLayerGroup_1.default,
+    Engine: engine_1.default,
     Layer: layer_1.default,
     LeafletAdapter: leaflet_adapter_1.default,
-    Valve: valve_1.default,
 };
 
 
@@ -163,30 +163,17 @@ const leaflet_adapter_1 = __webpack_require__(0);
  * Main Class for doing foo.
  */
 class CartoLayerGroup {
-    /**
-     * Class constructor
-     * @param valve The valve to do something
-     * @param layers The list with the Layers grouped in the layerGroup
-     *
-     * @example
-     *
-     * ```javascript
-     *
-     *  let cartoLayerGroup = new CartoLayerGroup(valve, layers);
-     *  foo = var;
-     * ```
-     */
-    constructor(valve, layers) {
-        this._valve = valve;
+    constructor(engine, layers) {
+        this._engine = engine;
         this._layers = layers;
-        this._valve.setLayerGroup(this);
+        this._engine.setLayerGroup(this);
     }
     get layers() {
         return this._layers;
     }
     update(response) {
         const visibleLayerIndexes = '0';
-        this._url = `https://ashbu.cartocdn.com/${this._valve.username}/api/v1/map/`;
+        this._url = `https://ashbu.cartocdn.com/${this._engine.username}/api/v1/map/`;
         this._url += `${response.layergroupid} /${visibleLayerIndexes}/{z}/{x}/{y}.png`;
         if (this._view) {
             this._view.setUrl(this._url);
@@ -13832,38 +13819,69 @@ exports.map = createMap;
 
 "use strict";
 
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const client_1 = __webpack_require__(7);
 /**
  *
  */
-class Layer {
-    constructor(source, style) {
-        this._source = source;
-        this._style = style;
+class Engine {
+    constructor(username, apiKey, serverUrl) {
+        this._username = username;
+        this._apiKey = apiKey;
+        this._serverUrl = serverUrl;
+        this._client = new client_1.default(this.url, apiKey);
+        addEventListener('map:load', this.load.bind(this));
     }
-    get source() {
-        return this._source;
+    get url() {
+        return this._serverUrl.replace('{user}', this._username) + '/api/v1/map';
     }
-    setStyle(style) {
-        this._style = style;
-        const event = new CustomEvent('map:load');
-        dispatchEvent(event);
+    get username() {
+        return this._username;
     }
-    toJSON() {
+    load() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const response = yield this._client.loadMapGet(this._serialize());
+            return this._update(response);
+        });
+    }
+    setLayerGroup(cartoLayerGroup) {
+        this._cartoLayerGroup = cartoLayerGroup;
+        this._analyses = cartoLayerGroup.getAnalyses();
+    }
+    /**
+     * @private
+     */
+    _update(response) {
+        this._cartoLayerGroup.update(response);
+        // this._updateVisModel(windshaftMap);
+        // this._updateLayerModels(windshaftMap);
+        // this._updateDataviewModels(windshaftMap, sourceId, forceFetch);
+        // this._updateAnalysisModels(windshaftMap);
+        return Promise.resolve();
+    }
+    /**
+     * Return an object with all the data needed in the server to instantiate a map.
+     */
+    _serialize() {
         return {
-            id: '636838fb-db9a-46b6-91d5-74ab9884111d',
-            options: {
-                cartocss: this._style,
-                cartocss_version: '2.1.1',
-                source: {
-                    id: this._source.id,
-                },
+            analyses: this._cartoLayerGroup.getAnalyses(),
+            buffersize: {
+                mvt: 0,
             },
-            type: 'mapnik',
+            dataviews: {},
+            layers: this._cartoLayerGroup.layers,
         };
     }
 }
-exports.default = Layer;
+exports.default = Engine;
 
 
 /***/ }),
@@ -13881,75 +13899,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const client_1 = __webpack_require__(8);
-/**
- *
- */
-class Valve {
-    constructor(username, apiKey, serverUrl) {
-        this._username = username;
-        this._apiKey = apiKey;
-        this._serverUrl = serverUrl;
-        this._client = new client_1.default(this.url, apiKey);
-        addEventListener('map:load', this.load.bind(this));
-    }
-    get url() {
-        return this._serverUrl.replace('{user}', this._username) + '/api/v1/map';
-    }
-    get username() {
-        return this._username;
-    }
-    load() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const response = yield this._client.loadMapGet(this._serialize());
-            this._update(response);
-            return Promise.resolve();
-        });
-    }
-    setLayerGroup(cartoLayerGroup) {
-        this._cartoLayerGroup = cartoLayerGroup;
-        this._analyses = cartoLayerGroup.getAnalyses();
-    }
-    /**
-     * @private
-     */
-    _update(response) {
-        this._cartoLayerGroup.update(response);
-        // this._updateVisModel(windshaftMap);
-        // this._updateLayerModels(windshaftMap);
-        // this._updateDataviewModels(windshaftMap, sourceId, forceFetch);
-        // this._updateAnalysisModels(windshaftMap);
-    }
-    _serialize() {
-        return {
-            analyses: this._cartoLayerGroup.getAnalyses(),
-            buffersize: {
-                mvt: 0,
-            },
-            dataviews: {},
-            layers: this._cartoLayerGroup.layers,
-        };
-    }
-}
-exports.default = Valve;
-
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(9);
+__webpack_require__(8);
 /**
  * Handle all the http comunication with the Maps API.
  * The basic operation is to instantiate a map.
@@ -13999,7 +13949,7 @@ const HEADERS = new Headers({
 
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports) {
 
 (function(self) {
@@ -14463,6 +14413,50 @@ const HEADERS = new Headers({
   }
   self.fetch.polyfill = true
 })(typeof self !== 'undefined' ? self : this);
+
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const EVENT_LOAD = new CustomEvent('map:load');
+/**
+ *
+ */
+class Layer {
+    constructor(source, style) {
+        this._source = source;
+        this._style = style;
+    }
+    get source() {
+        return this._source;
+    }
+    setStyle(style) {
+        this._style = style;
+        dispatchEvent(EVENT_LOAD);
+    }
+    setSource(source) {
+        this._source = source;
+        dispatchEvent(EVENT_LOAD);
+    }
+    toJSON() {
+        return {
+            id: '636838fb-db9a-46b6-91d5-74ab9884111d',
+            options: {
+                cartocss: this._style,
+                cartocss_version: '2.1.1',
+                source: {
+                    id: this._source.id,
+                },
+            },
+            type: 'mapnik',
+        };
+    }
+}
+exports.default = Layer;
 
 
 /***/ })

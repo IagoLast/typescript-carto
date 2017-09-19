@@ -1,5 +1,7 @@
 import Source from './analyses/source';
 
+const EVENT_LOAD = new CustomEvent('map:load');
+
 /**
  *
  */
@@ -18,8 +20,12 @@ export default class Layer {
 
     public setStyle(style: string): void {
         this._style = style;
-        const event = new CustomEvent('map:load');
-        dispatchEvent(event);
+        dispatchEvent(EVENT_LOAD);
+    }
+
+    public setSource(source: Source): void {
+        this._source = source;
+        dispatchEvent(EVENT_LOAD);
     }
 
     public toJSON() {

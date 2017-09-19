@@ -4,7 +4,7 @@ import Client from './client';
 /**
  *
  */
-export default class Valve {
+export default class Engine {
     private _username: string;
     private _apiKey: string;
     private _serverUrl: string;
@@ -32,8 +32,7 @@ export default class Valve {
 
     public async load(): Promise<void> {
         const response = await this._client.loadMapGet(this._serialize());
-        this._update(response);
-        return Promise.resolve();
+        return this._update(response);
     }
 
     public setLayerGroup(cartoLayerGroup: CartoLayerGroup): void {
@@ -44,14 +43,18 @@ export default class Valve {
     /**
      * @private
      */
-    private _update(response: string): void {
+    private _update(response: string): Promise<void> {
         this._cartoLayerGroup.update(response);
         // this._updateVisModel(windshaftMap);
         // this._updateLayerModels(windshaftMap);
         // this._updateDataviewModels(windshaftMap, sourceId, forceFetch);
         // this._updateAnalysisModels(windshaftMap);
+        return Promise.resolve();
     }
 
+    /**
+     * Return an object with all the data needed in the server to instantiate a map.
+     */
     private _serialize() {
         return {
             analyses: this._cartoLayerGroup.getAnalyses(),

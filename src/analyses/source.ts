@@ -1,6 +1,7 @@
 export default class Source {
     private _id: string;
     private _query: string;
+
     constructor(id: string, query: string) {
         this._id = id;
         this._query = query;

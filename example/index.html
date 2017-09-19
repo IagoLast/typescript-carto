@@ -20,21 +20,26 @@
     <div id="mapid"></div>
     <script>
         (async () => {
+            "use strict";
             let style = `#layer{ marker-width: 17; marker-fill: #27ff59;}`;
             // Create a map
-            var mymap = window.L.map('mapid').setView([40.505, -8.09], 3);
-            // Create the Valve
-            let valve = new carto.Valve('iago-carto', '552dc6b016acb007acf0b9091719be8d0a37847b', 'https://{user}.carto.com:443');
+            var mymap = window.L.map('mapid').setView([40.505, -8.09], 5);
+            // Create the Engine
+            let engine = new carto.Engine('iago-carto', '552dc6b016acb007acf0b9091719be8d0a37847b', 'https://{user}.carto.com:443');
             // Create a source node
             const source = new carto.Analyses.Source('a0', 'SELECT * FROM \"iago-carto\".lugares');
+            const source1 = new carto.Analyses.Source('a1', 'SELECT * FROM \"iago-carto\".lugares LIMIT 2');
             // Create a layer
             let layer = new carto.Layer(source, style);
             // Create a layerGroup
-            let cartoLayerGroup = new carto.CartoLayerGroup(valve, [layer]);
-            // Load the valve
-            await valve.load();
+            let cartoLayerGroup = new carto.CartoLayerGroup(engine, [layer]);
+            // Load the engine
+            await engine.load();
             // Once loaded get the leaflet view and add it to the map
             cartoLayerGroup.getView('leaflet').addTo(mymap);
+            setTimeout(() => {
+                layer.setSource(source1);
+            }, 1000)
         })();
     </script>
 </body>
