@@ -11,5 +11,17 @@ describe('CartoLayerGroup', () => {
             const expected = [source];
             expect(actual).toEqual(expected);
         });
+
+        it('should omit nested analyses ', () => {
+            const actual = cartoLayerGroup.getAnalyses();
+            const expected = [source];
+            expect(actual).toEqual(expected);
+        });
+
+        it('should omit duplicated analyses ', () => {
+            const actual = cartoLayerGroup.getAnalyses();
+            const expected = [source];
+            expect(actual).toEqual(expected);
+        });
     });
 });

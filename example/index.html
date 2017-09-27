@@ -34,12 +34,18 @@
             let layer = new carto.Layer(source, style);
             // Create a layerGroup
             let cartoLayerGroup = new carto.CartoLayerGroup(engine, [layer]);
+            // Set interactivity
+            layer.setInteractivity(['cartodb_id', 'name']);
             // Load the engine
             await engine.load();
             // Once loaded get the leaflet view and add it to the map
             cartoLayerGroup.getView('leaflet').addTo(mymap);
             setTimeout(() => {
                 layer.setSource(source1);
+                // Set popups
+                cartoLayerGroup.on('mouse', event => {
+                    console.info(event);
+                });
             }, 1000)
         })();
     </script>

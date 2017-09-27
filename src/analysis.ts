@@ -1,4 +1,9 @@
 export default class Analysis {
+    /**
+     * Create a Source Node
+     * @param id The id of the source
+     * @param query The sql Query
+     */
     public static Source(id: string, query: string): Analysis {
         return new Analysis(id, 'source', undefined, { query });
     }
