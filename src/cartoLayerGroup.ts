@@ -13,13 +13,11 @@ export default class CartoLayerGroup {
     private _url: string;
     private _view: any;
     private _interactivity: Interactivity;
-    private _events: any;
 
     constructor(engine: Engine, layers: Layer[]) {
         this._engine = engine;
         this._layers = layers;
         this._engine.setLayerGroup(this);
-        this._events = {};
     }
 
     public get layers(): Layer[] {
@@ -48,18 +46,18 @@ export default class CartoLayerGroup {
         return this._layers.map((layer: Layer) => layer.source);
     }
 
-    public on(event: string, callback: any) {
-        this._events[event] = callback;
-    }
-
     private _updateView(response: any) {
         if (this._view) {
             this._view.setUrl(this._url);
             if (!this._interactivity && this._layers.some((layer) => layer.isInteractive())) {
+                // TODO: Should be different interactivities for different layers?
                 this._interactivity = new Interactivity(this._view);
-                for (const event in this._events) {
-                    if (this._events.hasOwnProperty(event)) {
-                        this._interactivity.on(event, this._events[event]);
+            }
+            for (const layer of this._layers) {
+                if (layer.isInteractive()) {
+                    // tslint:disable-next-line:forin
+                    for (const event in layer.getEvents()) {
+                        this._interactivity.on(event, layer.getEvents()[event]);
                     }
                 }
             }

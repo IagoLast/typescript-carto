@@ -8,7 +8,8 @@ const EVENT_LOAD = new CustomEvent('map:load');
 export default class Layer {
     private _source: Analysis;
     private _style: string;
-    private _interactivity: string[];
+    private _interactiveFields: string[];
+    private _events: any = {};
 
     constructor(source: Analysis, style: string) {
         this._source = source;
@@ -20,7 +21,7 @@ export default class Layer {
     }
 
     public isInteractive() {
-        return this._interactivity ? true : false;
+        return this._interactiveFields ? true : false;
     }
 
     public setStyle(style: string): void {
@@ -34,8 +35,17 @@ export default class Layer {
     }
 
     public setInteractivity(fields: string[]) {
-        this._interactivity = fields;
+        this._interactiveFields = fields;
         dispatchEvent(EVENT_LOAD);
+    }
+
+    // TODO: create real implementation
+    public on(eventName: string, callback: any): void {
+        this._events[eventName] = callback;
+    }
+
+    public getEvents(): any{
+        return this._events;
     }
 
     public toJSON() {
@@ -44,7 +54,7 @@ export default class Layer {
             options: {
                 cartocss: this._style,
                 cartocss_version: '2.1.1',
-                interactivity: this._interactivity,
+                interactivity: this._interactiveFields,
                 source: {
                     id: this._source.id,
                 },

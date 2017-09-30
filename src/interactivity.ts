@@ -93,11 +93,14 @@ export default class Interactive {
         y = (y + max) % max;
 
         const data = this._cache[this._map.getZoom() + '_' + x + '_' + y];
-        let result = {};
+        let result;
         if (data && data.grid) {
             const idx = this._utfDecode(data.grid[gridY].charCodeAt(gridX));
             const key = data.keys[idx];
             if (data.data.hasOwnProperty(key)) {
+                if (!result) {
+                    result = {};
+                }
                 result = data.data[key];
             }
         }
