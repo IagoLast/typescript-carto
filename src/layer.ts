@@ -28,6 +28,18 @@ export default class Layer {
         return this._interactiveFields ? true : false;
     }
 
+    public hide(): void {
+        this._isVisible = false;
+        // TODO: Only client relad-is needed
+        dispatchEvent(EVENT_LOAD);
+    }
+
+    public show(): void {
+        this._isVisible = true;
+        // TODO: Only client relad-is needed
+        dispatchEvent(EVENT_LOAD);
+    }
+
     public isVisible() {
         return this._isVisible;
     }
