@@ -30,13 +30,13 @@ export default class Layer {
 
     public hide(): void {
         this._isVisible = false;
-        // TODO: Only client relad-is needed
+        // TODO: Only client reload-is needed
         dispatchEvent(EVENT_LOAD);
     }
 
     public show(): void {
         this._isVisible = true;
-        // TODO: Only client relad-is needed
+        // TODO: Only client reload-is needed
         dispatchEvent(EVENT_LOAD);
     }
 
