@@ -24,4 +24,5 @@ describe('CartoLayerGroup', () => {
             expect(actual).toEqual(expected);
         });
     });
+
 });

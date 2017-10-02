@@ -10,10 +10,14 @@ export default class Layer {
     private _style: string;
     private _interactiveFields: string[];
     private _events: any = {};
+    private _isVisible: boolean;
+    private _id: string;
 
-    constructor(source: Analysis, style: string) {
+    constructor(id: string, source: Analysis, style: string) {
         this._source = source;
         this._style = style;
+        this._isVisible = true;
+        this._id = id;
     }
 
     public get source(): Analysis {
@@ -22,6 +26,10 @@ export default class Layer {
 
     public isInteractive() {
         return this._interactiveFields ? true : false;
+    }
+
+    public isVisible() {
+        return this._isVisible;
     }
 
     public setStyle(style: string): void {
@@ -44,13 +52,13 @@ export default class Layer {
         this._events[eventName] = callback;
     }
 
-    public getEvents(): any{
+    public getEvents(): any {
         return this._events;
     }
 
     public toJSON() {
         return {
-            id: '636838fb-db9a-46b6-91d5-74ab9884111d',
+            id: this._id,
             options: {
                 cartocss: this._style,
                 cartocss_version: '2.1.1',

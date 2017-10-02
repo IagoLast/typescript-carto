@@ -25,7 +25,7 @@ export default class CartoLayerGroup {
     }
 
     public update(response: any): CartoLayerGroup {
-        const visibleLayerIndexes = '0';
+        const visibleLayerIndexes = this._getVisibleLayerIndexes();
         this._url = `https://ashbu.cartocdn.com/${this._engine.username}/api/v1/map/`;
         this._url += `${response.layergroupid} /${visibleLayerIndexes}/{z}/{x}/{y}.png`;
         this._updateView(response);
@@ -62,6 +62,15 @@ export default class CartoLayerGroup {
                 }
             }
         }
+    }
+
+    private _getVisibleLayerIndexes(): string {
+        return this.layers.reduce((acum: number[], layer: Layer, index: number) => {
+            if (layer.isVisible()) {
+                acum.push(index);
+            }
+            return acum;
+        }, []).join(',');
     }
 
 }
